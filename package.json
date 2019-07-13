@@ -1,0 +1,14 @@
+{
+    "name": "Zenex Token Sale",
+    "version": "1.0.0",
+    "description": "Zenex token sale ICO",
+    "main": "truffle.js",
+    "directories": {
+        "test": "test"
+    },
+    "author": "Ashok",
+    "license": "ISC",
+    "devDependencies": {
+        "lite-server": "^2.3.0"
+    }
+}
