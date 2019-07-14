@@ -5,6 +5,7 @@ node_modules/
 # Compiled source #
 ###################
 scribbles.txt
+.gitignore
 
 # Packages #
 ############

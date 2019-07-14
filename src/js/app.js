@@ -28,7 +28,6 @@ App = {
       },
       initContracts: function() {  
          $.getJSON("ZenexTokenSale.json", function(zenTokenSale) {
-            console.log('function called: '+App.contracts);
             App.contracts.ZenexTokenSale = TruffleContract(zenTokenSale);
             App.contracts.ZenexTokenSale.setProvider(App.web3Provider);
             App.contracts.ZenexTokenSale.deployed().then(function(zenTokenSale) {
@@ -94,16 +93,17 @@ App = {
             App.tokensSold = tokensSold.toNumber();
             $('.tokens-sold').html(App.tokensSold);
             $('.tokens-available').html(App.tokensAvailable);
-      
+            //App.tokensSold = 570000;
             var progressPercent = (Math.ceil(App.tokensSold) / App.tokensAvailable) * 100;
             $('#progress').css('width', progressPercent + '%');
       
             // Load token contract
             App.contracts.ZenexToken.deployed().then(function(instance) {
               zenexTokenInstance = instance;
+              console.log(App.account);
               return zenexTokenInstance.balanceOf(App.account);
             }).then(function(balance) {
-              $('.dapp-balance').html(balance.toNumber());
+              $('.zenex-balance').html(balance.toNumber());
               App.loading = false;
               loader.hide();
               content.show();
@@ -125,6 +125,7 @@ App = {
             console.log("Tokens bought...")
             $('form').trigger('reset') // reset number of tokens in form
             // Wait for Sell event
+    
           });
         }
       }
